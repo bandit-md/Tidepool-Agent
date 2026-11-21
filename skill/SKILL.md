@@ -17,7 +17,8 @@ Research tool, not financial advice. Never promise returns. Scores measure risk 
 ## Preflight
 - If `tidepool.py` is available and the shell has network access, run it first for utilities 1-5 and 7, then do 6 and 8 manually:
   `python3 tidepool.py --top-chains 8 --out ./out`
-  If the network is blocked, say so and fall back to the connected data tools.
+  If the network is blocked (exit code 3: no pool data), say so and fall back to the connected data tools.
+  Tokens marked `unverified` had no GoPlus result: run the safety check yourself before ranking them.
 - List which data tools are actually available (web search, DexScreener/GeckoTerminal, GoPlus, RugCheck, Birdeye, explorers, DefiLlama). If fewer than 3 core sources (market data, liquidity, contract security) are reachable, stop and say what is missing.
 - Use one adapter per chain: Solana (mint/freeze authority, RugCheck), EVM chains (GoPlus, explorer source), Tron (TRC-20, transfer limits), Sui (no GoPlus: safety marked n/a). Never apply EVM checks to Solana or Tron.
 - Timestamp every datapoint. Data older than 15 minutes is stale; re-fetch before ranking.
